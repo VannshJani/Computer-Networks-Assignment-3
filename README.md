@@ -103,3 +103,5 @@ The script executes these phases:
      - Repeat first test for consistency check
 5. **CLI Access**:
    - Opens Mininet CLI for manual exploration
+
+While generating results for the report, each file (q1.py and q2.py) were run 3 times to maintain consistency checks.
