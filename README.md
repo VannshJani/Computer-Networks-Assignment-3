@@ -105,3 +105,46 @@ The script executes these phases:
    - Opens Mininet CLI for manual exploration
 
 While generating results for the report, each file (q1.py and q2.py) were run 3 times to maintain consistency checks.
+
+
+## Q3: Network routing:
+# Distance Vector Routing Protocol Implementation
+
+This project implements a distributed, asynchronous distance vector routing protocol for a network with 4 nodes. The implementation follows the Bellman-Ford algorithm (as discussed in the class) where each node maintains its own routing table and exchanges information only with its directly connected neighbors.
+
+## Network Topology
+- Node 0 is connected to nodes 1, 2, and 3 with costs 1, 3, and 7 respectively
+- Node 1 is connected to nodes 0 and 2 with costs 1 and 1 respectively
+- Node 2 is connected to nodes 0, 1, and 3 with costs 3, 1, and 2 respectively
+- Node 3 is connected to nodes 0 and 2 with costs 7 and 2 respectively
+
+## Files
+- `node0.c`, `node1.c`, `node2.c`, `node3.c`: Implementation of routing protocol for each node
+- `distance_vector.c`: Network simulation environment (provided)
+
+## How to Compile
+Since the code is written in an older C style, some of the modern compilers may throw some warnings regarding the older version of C. So, to compile without any warnings, use:
+```bash
+cc -Wno-implicit-int -Wno-implicit-function-declaration -Wno-return-type distance_vector.c node0.c node1.c node2.c node3.c -o dv
+```
+
+## How to Run
+Execute the compiled program:
+```bash
+./dv
+```
+
+When prompted, enter a TRACE value:
+- 0: No debug information
+- 1: Basic debug information
+- 2: Detailed debug information (recommended for observing the algorithm)
+
+The simulation will execute the distance vector routing algorithm and terminate when there are no more routing packets in transit (i.e., when the algorithm has converged).
+
+## Algorithm
+The implementation uses the distance vector routing algorithm, which works as follows:
+1. Each node initializes its distance table with direct costs to neighbors
+2. Each node sends its distance vector to all directly connected neighbors
+3. When a node receives a routing packet from a neighbor, it updates its distance table
+4. If updates were made, it recalculates minimum costs and sends updates to neighbors
+5. The algorithm continues until convergence (no more updates to any distance table)
