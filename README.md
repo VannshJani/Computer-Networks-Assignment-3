@@ -45,12 +45,12 @@ The script supports three modes:
 - `with-stp`: Run tests with STP enabled on switches.
 - `with-pox`: Run tests using POX controller.
 
-Run the script using one of the following commands:
-Without fixes (no STP)
+Run the script using one of the following commands:  
+Without fixes (no STP)  
 sudo python assignment_q1.py without-fixes
 
-With STP enabled
-sudo python assignment_q1.py with-stp
+With STP enabled  
+sudo python assignment_q1.py with-stp  
 
-With POX controller
+With POX controller  
 sudo python assignment_q1.py with-pox (If you are running the script in `with-pox` mode, ensure that the POX controller is running in another terminal before executing `assignment_q1.py`.)
