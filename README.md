@@ -108,7 +108,7 @@ While generating results for the report, each file (q1.py and q2.py) were run 3 
 
 
 ## Q3: Network routing:
-# Distance Vector Routing Protocol Implementation
+### Distance Vector Routing Protocol Implementation
 
 This project implements a distributed, asynchronous distance vector routing protocol for a network with 4 nodes. The implementation follows the Bellman-Ford algorithm (as discussed in the class) where each node maintains its own routing table and exchanges information only with its directly connected neighbors.
 
