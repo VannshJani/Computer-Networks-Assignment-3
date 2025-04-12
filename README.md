@@ -47,10 +47,61 @@ The script supports three modes:
 
 Run the script using one of the following commands:  
 Without fixes (no STP)  
-sudo python assignment_q1.py without-fixes
+sudo python3 q1.py without-fixes
 
 With STP enabled  
-sudo python assignment_q1.py with-stp  
+sudo python3 q1.py with-stp  
 
 With POX controller  
-sudo python assignment_q1.py with-pox (If you are running the script in `with-pox` mode, ensure that the POX controller is running in another terminal before executing `assignment_q1.py`.)
+sudo python3 q1.py with-pox (If you are running the script in `with-pox` mode, ensure that the POX controller is running in another terminal before executing `q1.py`.)
+
+
+## Part-2: NAT Configuration & Performance Testing
+
+### Features
+- **Network Architecture**:
+  - Public network (`172.16.10.0/24`) with hosts `h3-h8`
+  - Private networks (`10.1.1.0/24` and `10.1.2.0/24`) with hosts `h1-h2`
+  - NAT host (`h9`) with three interfaces
+- **Configurations**:
+  - Automatic STP enablement on all switches
+  - IP forwarding + MASQUERADE NAT rules
+  - Port forwarding:
+    - TCP/5001 → `h1:5001`
+    - TCP/5002 → `h2:5002`
+- **Tests**:
+  - Bidirectional ping tests (internal ↔ external)
+  - 120-second iperf3 throughput tests
+  - Pre/post NAT configuration comparisons
+
+---
+
+### Usage
+
+#### Step 1: Run the Script
+sudo python3 q2.py
+
+#### Step 2: Automatic Test Sequence
+The script executes these phases:
+1. **Topology Setup** (30 sec STP convergence)
+2. **Initial Tests** (pre-NAT configuration):
+   - Internal → External pings
+   - External → Internal pings (expected failures)
+   - Runs three iperf3 tests:
+     - Internal server ↔ External client
+     - External server ↔ Internal client
+     - Repeat first test for consistency check
+3. **NAT Configuration**:
+   - Enables IP forwarding
+   - Sets MASQUERADE rules
+   - Configures port forwarding
+4. **Post-NAT Tests**:
+   - Repeats ping tests with expected success
+   - Runs three iperf3 tests:
+     - Internal server ↔ External client
+     - External server ↔ Internal client
+     - Repeat first test for consistency check
+5. **CLI Access**:
+   - Opens Mininet CLI for manual exploration
+
+---
