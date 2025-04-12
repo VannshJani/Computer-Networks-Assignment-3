@@ -23,15 +23,15 @@ This repository contains the implementation of a network topology with loops and
 ### Prerequisites
 
 1. **Mininet**: Ensure Mininet is installed. You can install it using:
-sudo apt-get install mininet
+`sudo apt-get install mininet`
 2. **Python**: The script is compatible with Python 3.
 
 3. **POX Controller** (optional): If you want to test the topology with POX, clone the POX repository and run the controller:
    Clone POX repository
-   git clone https://github.com/noxrepo/pox.git
-   cd pox
+   `git clone https://github.com/noxrepo/pox.git`
+   `cd pox`
    Run POX controller
-   ./pox.py log.level --DEBUG openflow.discovery openflow.spanning_tree forwarding.l2_learning
+   `./pox.py log.level --DEBUG openflow.discovery openflow.spanning_tree forwarding.l2_learning`
 
 ### Usage
 
@@ -47,13 +47,13 @@ The script supports three modes:
 
 Run the script using one of the following commands:  
 Without fixes (no STP)  
-sudo python3 q1.py without-fixes
+`sudo python3 q1.py without-fixes`
 
 With STP enabled  
-sudo python3 q1.py with-stp  
+`sudo python3 q1.py with-stp`  
 
 With POX controller  
-sudo python3 q1.py with-pox (If you are running the script in `with-pox` mode, ensure that the POX controller is running in another terminal before executing `q1.py`.)
+`sudo python3 q1.py with-pox` (If you are running the script in `with-pox` mode, ensure that the POX controller is running in another terminal before executing `q1.py`.)
 
 
 ## Part-2: NAT Configuration & Performance Testing
@@ -79,7 +79,7 @@ sudo python3 q1.py with-pox (If you are running the script in `with-pox` mode, e
 ### Usage
 
 #### Step 1: Run the Script
-sudo python3 q2.py
+`sudo python3 q2.py`
 
 #### Step 2: Automatic Test Sequence
 The script executes these phases:
